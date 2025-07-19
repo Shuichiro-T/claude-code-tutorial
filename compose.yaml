@@ -1,0 +1,16 @@
+services:
+  claude:
+    build: .
+    container_name: claude-container
+    volumes:
+      - claude-home:/home/claude
+    stdin_open: true
+    tty: true
+    working_dir: /home/claude/workspace
+    environment:
+      - TERM=xterm-256color
+    restart: unless-stopped
+
+volumes:
+  claude-home:
+    driver: local
